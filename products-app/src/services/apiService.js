@@ -30,5 +30,17 @@ export const removeProduct = async (id) => {
     try{
         const response = await axios.delete(`${BASE_URL}/${id}`);
         return response.data;
-    } catch(error){}
-}
+    } catch(error){
+        throw error; 
+    }
+};
+
+// adds a new product to the database
+export const addProduct = (product) => {
+    return axios.post(`${BASE_URL}/add`, JSON.stringify(product));
+};
+
+// edits an existing product by ID
+export const editProduct = (id, product) => {
+    // implement it using similar logic as addProduct function but use axios.put method
+};
