@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
-const ProductsContext = () => useContext(ProductsContext);
+const ProductsContext = createContext();
 export const useProductsContext = () => useContext ( ProductsContext ) ;
 
 export const ProductsProvider = ({ children }) => {
@@ -12,12 +12,12 @@ export const ProductsProvider = ({ children }) => {
 
             if(index !== -1) {
                 const newProducts = [...currentProducts];
-                newProducts [ index ] = product ;
+                newProducts[ index ] = product ;
                 return newProducts ;
             } else {
                 // Product doesn't exist , add it as a new product
                 // If the product doesn 't have an ID , generate one
-                const newProduct = product . id ? product : { ... product , id : Date.now ()
+                const newProduct = product.id ? product : { ...product , id : Date.now ()
                     };
                 return [...currentProducts, newProduct];
             }
